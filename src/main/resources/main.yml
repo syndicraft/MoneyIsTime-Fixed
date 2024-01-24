@@ -1,0 +1,5 @@
+# The amount of money to deposit every interval period.
+PAY_OUT: 1
+
+# The period of time in seconds between each account deposit.
+PAY_OUT_INTERVAL: 60

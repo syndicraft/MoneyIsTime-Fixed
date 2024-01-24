@@ -1,0 +1,9 @@
+name: MoneyIsTime
+version: '${project.version}'
+main: net.syndicraft.moneyistime.MoneyIsTime
+api-version: '1.20'
+load: STARTUP
+authors:
+  - XST99
+  - CarThax
+  - Willam Bar
