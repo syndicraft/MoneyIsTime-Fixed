@@ -88,8 +88,8 @@ public class Data extends ConfigurationFile {
 	}
 	
 	public boolean isAcceptableButton(Location location) {
-		plugin.getLogger().info("SIGNS: " + p_signs.values());
-		plugin.getLogger().info("SINGLOC: " + p_signs.get(0).getLocation());
+		//plugin.getLogger().info("SIGNS: " + p_signs.values());
+		//plugin.getLogger().info("SINGLOC: " + p_signs.get(0).getLocation());
         for (Sign sign : p_signs.values()) {
 			//System.out.println("SIGN LOCATION "+sign.getLocation() + " " + location);
 			if (sign.getLocation().getBlockY()-1 == location.getBlockY()) return true;

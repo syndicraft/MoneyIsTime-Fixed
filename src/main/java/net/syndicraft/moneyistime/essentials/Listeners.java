@@ -29,6 +29,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import javax.swing.text.NumberFormatter;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -74,7 +76,8 @@ public class Listeners implements Listener {
 		long seconds = (time/1000);
 		MoneyIsTime.getData().writeTime(event.getPlayer().getUniqueId(), previousTime);
 		double payOut = (MoneyIsTime.getMainConfig().getPayOut() * seconds)/MoneyIsTime.getMainConfig().getPayOutInterval();
-		event.getPlayer().sendMessage(Text.color("&7[&6Syndicraft&7] &aYou checked out &6$" + payOut + "&a!"));
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		event.getPlayer().sendMessage(Text.color("&7[&6Syndicraft&7] &aYou checked out &6" + formatter.format(payOut) + "&a!"));
 		Eco.pay(event.getPlayer(), payOut);
 		MoneyHandler.playerCheckIn(event.getPlayer());
 	}
@@ -113,7 +116,8 @@ public class Listeners implements Listener {
 		long seconds = (time/1000);
 		MoneyIsTime.getData().writeTime(event.getPlayer().getUniqueId(), previousTime);
 		double payOut = (MoneyIsTime.getMainConfig().getPayOut() * seconds)/MoneyIsTime.getMainConfig().getPayOutInterval();
-		event.getPlayer().sendMessage(Text.color("&7[&6Syndicraft&7] &aYou checked out &6$" + payOut + "&a!"));
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		event.getPlayer().sendMessage(Text.color("&7[&6Syndicraft&7] &aYou checked out &6" + formatter.format(payOut) + "&a!"));
 		Eco.pay(event.getPlayer(), payOut);
 		MoneyHandler.playerCheckIn(event.getPlayer());
 	}
