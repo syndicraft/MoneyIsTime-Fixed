@@ -5,7 +5,10 @@ import net.syndicraft.moneyistime.MoneyIsTime;
 import net.syndicraft.moneyistime.signs.Sign;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -87,13 +90,14 @@ public class Data extends ConfigurationFile {
 		return null;
 	}
 	
-	public boolean isAcceptableButton(Location location) {
+	public boolean isAcceptableButton(Location location, Player player) {
 		//plugin.getLogger().info("SIGNS: " + p_signs.values());
 		//plugin.getLogger().info("SINGLOC: " + p_signs.get(0).getLocation());
         for (Sign sign : p_signs.values()) {
 			//System.out.println("SIGN LOCATION "+sign.getLocation() + " " + location);
-			if (sign.getLocation().getBlockY()-1 == location.getBlockY()) return true;
-		}
+			//Bukkit.getWorld(player.getWorld().getName()).getBlockAt(sign.getLocation()).getType() != Material.AIR
+			if (sign.getLocation().getBlockY()-1 == location.getBlockY() && p_signs.containsKey(sign.getSignID())) return true;
+			}
 		return false;
 	}
 	
@@ -101,6 +105,8 @@ public class Data extends ConfigurationFile {
 		this.getConfiguration().set("PLUGIN_DATA.SIGNS." + sign.getSignID(), null);
 		save();
 		reloadSettings();
+		p_signs.remove(sign.getSignID());
+		p_location.remove(sign.getSignID());
 	}
 	
 	public void addSign(Sign sign) {

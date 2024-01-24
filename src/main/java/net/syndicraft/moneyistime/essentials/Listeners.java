@@ -61,7 +61,8 @@ public class Listeners implements Listener {
 		if (!event.getPlayer().hasPermission("syndicraft.moneyistime")) return;
 		MoneyHandler.playerCheckOut(event.getPlayer());
 	}
-	
+
+	/*
 	@EventHandler(priority=EventPriority.HIGHEST)
 	public void onSignInteract(PlayerOpenSignEvent event) {
 		if (!event.getPlayer().hasPermission("syndicraft.moneyistime.checkout")) return;
@@ -80,7 +81,7 @@ public class Listeners implements Listener {
 		event.getPlayer().sendMessage(Text.color("&7[&6Syndicraft&7] &aYou checked out &6" + formatter.format(payOut) + "&a!"));
 		Eco.pay(event.getPlayer(), payOut);
 		MoneyHandler.playerCheckIn(event.getPlayer());
-	}
+	}*/
 	
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onButtonInteract(PlayerInteractEvent event) {
@@ -104,7 +105,7 @@ public class Listeners implements Listener {
 		//player.sendMessage("Block is button");
 		if (!event.getPlayer().hasPermission("syndicraft.moneyistime.checkout")) return;
 		//player.sendMessage("Has permission");
-		if (!MoneyIsTime.getData().isAcceptableButton(event.getClickedBlock().getLocation())) return;
+		if (!MoneyIsTime.getData().isAcceptableButton(event.getClickedBlock().getLocation(),event.getPlayer())) return;
 		//player.sendMessage("Is acceptable button");
 		MoneyHandler.playerCheckOut(event.getPlayer());
 		long time = MoneyIsTime.getData().getTime(event.getPlayer().getUniqueId());
