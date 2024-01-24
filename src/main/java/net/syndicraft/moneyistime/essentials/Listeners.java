@@ -93,16 +93,16 @@ public class Listeners implements Listener {
 				Material.WARPED_BUTTON
 		});
 		if (event.getClickedBlock() == null) return;
-		Player player = event.getPlayer();
-		player.sendMessage("Block not null");
+		//Player player = event.getPlayer();
+		//player.sendMessage("Block not null");
 		if (!event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) return;
-		player.sendMessage("Block right-clicked");
+		//player.sendMessage("Block right-clicked");
 		if (!buttons.contains(event.getClickedBlock().getType())) return;
-		player.sendMessage("Block is button");
+		//player.sendMessage("Block is button");
 		if (!event.getPlayer().hasPermission("syndicraft.moneyistime.checkout")) return;
-		player.sendMessage("Has permission");
+		//player.sendMessage("Has permission");
 		if (!MoneyIsTime.getData().isAcceptableButton(event.getClickedBlock().getLocation())) return;
-		player.sendMessage("Is acceptable button");
+		//player.sendMessage("Is acceptable button");
 		MoneyHandler.playerCheckOut(event.getPlayer());
 		long time = MoneyIsTime.getData().getTime(event.getPlayer().getUniqueId());
 		if (time <= 999) {
